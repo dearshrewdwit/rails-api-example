@@ -24,7 +24,6 @@ RSpec.describe Api::PlayersController, type: :controller do
 
       it 'returns 200' do
         get :show, params: params
-        p player
         expect(response).to have_http_status(:ok)
       end
     end
