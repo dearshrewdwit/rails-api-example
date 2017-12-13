@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115215114) do
+ActiveRecord::Schema.define(version: 20171213084708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,20 @@ ActiveRecord::Schema.define(version: 20171115215114) do
     t.string "name"
     t.float "age"
     t.integer "prize_money"
-    t.integer "titles"
     t.integer "grand_slams"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "titles", force: :cascade do |t|
+    t.string "name"
+    t.string "title_type"
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "player_id"
+    t.index ["player_id"], name: "index_titles_on_player_id"
+  end
+
+  add_foreign_key "titles", "players"
 end

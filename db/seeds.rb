@@ -6,4 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Player.create(name: "Roger Federer", age: 36.25, prize_money: 110235682, titles: 95, grand_slams: 19)
+title = Title.create(name: "Wimbledon", title_type: 'major', year: 2017)
+player = Player.new(name: "Roger Federer", age: 36.25, titles: [title], prize_money: 110235682, grand_slams: 19)
+player.save

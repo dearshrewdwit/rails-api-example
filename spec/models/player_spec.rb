@@ -8,7 +8,7 @@ RSpec.describe Player, type: :model do
   end
 
   context 'is not a valid record' do
-    %i(name age prize_money titles grand_slams).each do |property|
+    %i(name age prize_money grand_slams).each do |property|
       it "#{property} can't be blank" do
         player = build(:player, :champion)
         player.update_attribute(property, '')

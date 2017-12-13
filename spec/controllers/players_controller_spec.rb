@@ -51,7 +51,6 @@ RSpec.describe Api::PlayersController, type: :controller do
           name: 'Roger Federer',
           age: 36,
           prize_money: 110235682,
-          titles: 95,
           grand_slams: 19
         }
       }
