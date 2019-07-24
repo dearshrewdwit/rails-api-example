@@ -1,6 +1,6 @@
 # Rails API example
 
-This is a super basic Rails CRUD JSON API
+This is a super basic Rails CRUD JSON API _nested resource version_
 
 # Instructions
 
@@ -28,6 +28,13 @@ Note the default port `3000`
 
 In a separate terminal shell make a [curl][1] request or use [postman][2]
 
+## Rails Routes
+
+`config/routes.rb` this is where we declare routes. One of the ways Rails makes this easy is by providing a helper method `resources`
+
+
+
+
 ## Create
 
 POST requests map to the `create` controller action
@@ -46,15 +53,19 @@ POST requests map to the `create` controller action
 
 GET requests map to `index` or `show` controller actions depending on the URI
 ```sh
-# index
+# api/players#index
 > curl localhost:3000/api/players
 > {"players":[{"id":2,"name":"Roger Federer","age":36.0,"prize_money":110235682,"titles":95,"grand_slams":19,"created_at":"2017-11-15T22:41:46.806Z","updated_at":"2017-11-15T22:41:46.806Z"}]}
 
-# show success
+# api/titles#index
+> curl localhost:3000/api/players/1/titles
+> {"titles":[{"id":1,"name":"Wimbledon","title_type":"major","year":2017,"created_at":"2017-12-14T09:14:43.549Z","updated_at":"2017-12-14T09:14:43.549Z","player_id":1}]}
+
+# api/players#show success
 > curl localhost:3000/api/players/2
 > {"player":{"id":2,"name":"Roger Federer","age":36.0,"prize_money":110235682,"titles":95,"grand_slams":19,"created_at":"2017-11-15T22:41:46.806Z","updated_at":"2017-11-15T22:41:46.806Z"}}
 
-# show failure
+# api/players#show failure
 > curl localhost:3000/api/players/5
 > {"errors":["Couldn't find Player {id: 5}"]}
 ```
